@@ -3,8 +3,6 @@ pandas
 pandocfilters
 pickleshare==0.7.5
 pmdarima==1.8.2
-
-pyodbc===4.0.0-unsupported
 pyparsing==2.4.7
 PySocks==1.7.1
 pytest==0.0.0
