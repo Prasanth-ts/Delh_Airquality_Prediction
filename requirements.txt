@@ -2,9 +2,6 @@ absl-py==0.12.0
 alabaster==0.7.12
 appdirs==1.4.4
 argh==0.26.2
-argon2-cffi @ file:///tmp/build/80754af9/argon2-cffi_1596828493937/work
-asn1crypto @ file:///tmp/build/80754af9/asn1crypto_1596577642040/work
-astroid @ file:///tmp/build/80754af9/astroid_1592495912941/work
 astropy==4.0.2
 astunparse==1.6.3
 async-generator==1.10
