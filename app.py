@@ -7,15 +7,17 @@ import seaborn as sns
 
 
 
+
 model=pickle.load(open('model.p','rb'))
 
 
 
 
 
-Real_data = pd.read_csv("Delhi.csv",index_col=[0],parse_dates=[0],skiprows=2)
+Real_data = pd.read_excel("Delhi.xlsx",index_col=[0],parse_dates=[0],skiprows=2)
 Real_data['pm25']=pd.to_numeric(Real_data['pm25'],errors='coerce')
 Eda_data = pd.read_csv("Delhi_EDA.csv",index_col=[0],)
+
 
 
 html_temp = """
@@ -61,14 +63,17 @@ st.markdown(html_temp,unsafe_allow_html=True)
     
 
 if nav == "Before EDA":
+    col1, col2 = st.beta_columns([1,1])
+    with col1:
+    	if st.sidebar.checkbox("Show Data"):
+        	st.dataframe(Real_data, width = 600 , height = 200 )
+    with col2:
+    	if st.sidebar.checkbox("Summarry"):
+    		st.write(Real_data.describe())
     
-    if st.sidebar.checkbox("Show Data"):
-        st.dataframe(Real_data, width = 600 , height = 200 )
-    if st.sidebar.checkbox("Summarry"):
-    	st.write(Real_data.describe())
-    
-    graph = st.sidebar.radio("Graph",["Histogram","Line Plot"])
-
+    graph = st.sidebar.radio("Graph",["None","Histogram","Line Plot"])
+    if graph=="None":
+       st.write('')
     if graph == "Histogram":
        st.write(sns.distplot(Real_data))
        st.set_option('deprecation.showPyplotGlobalUse', False)
@@ -85,11 +90,14 @@ if nav == "Before EDA":
     
        
 if nav == "After EDA":
+    col1, col2 = st.beta_columns([1,1])
+    with col1:
     
-    if st.sidebar.checkbox("Show Data"):
-        st.dataframe(Eda_data, width = 600 , height = 200 )
-    if st.sidebar.checkbox("Summarry"):
-    	st.write(Eda_data.describe())
+    	if st.sidebar.checkbox("Show Data"):
+        	st.dataframe(Eda_data, width = 600 , height = 200 )
+    with col2:
+    	if st.sidebar.checkbox("Summarry"):
+    		st.write(Eda_data.describe())
     
     graph = st.sidebar.selectbox("",["Histogram","Line Plot"])
 
@@ -116,19 +124,8 @@ if nav == "Prediction":
     pred.index=index_future_dates
     if st.button("Predict"):
     	st.write((pred), width = 600 , height = 500 )
-    if st.checkbox('Predicted graph'):
+    if st.sidebar.checkbox('Predicted graph'):
     	fig = px.line(pred, title = 'Predicted PM2.5', width = 800)
     	
     	fig.update_xaxes(rangeslider_visible = True)
     	st.plotly_chart(fig)
-    		
-    	
-    	
-
-	        
-        
-        
-        
-        
-        
-        
