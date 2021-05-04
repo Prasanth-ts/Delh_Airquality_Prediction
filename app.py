@@ -13,7 +13,7 @@ model=pickle.load(open('model.p','rb'))
 
 
 
-Real_data = pd.read_excel("Delhi.xlsx",index_col=[0],parse_dates=[0],skiprows=2)
+Real_data = pd.read_csv("Delhi.csv",index_col=[0],parse_dates=[0],skiprows=2)
 Real_data['pm25']=pd.to_numeric(Real_data['pm25'],errors='coerce')
 Eda_data = pd.read_csv("Delhi_EDA.csv",index_col=[0],)
 
