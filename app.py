@@ -51,7 +51,7 @@ if nav == "Home":
 	html_temp = """
 <h1 style="color:green;text-align:center;">Airqulity(PM2.5) Prediction </h>
 <h2 style="color:green">Group 3</h2>
- <img src="https://www.aqi.in/share/1549646231DelhiAQI(AirQualityIndex),AirPollution.jpg" alt="Girl in a jacket" width="800"> 
+ <img src="https://www2.iqair.com/sites/default/files/styles/wide_hero_2x/public/blog/2018-01/18_01_can_air_pollution.jpg" width="800"> 
 </div>
 
 """
